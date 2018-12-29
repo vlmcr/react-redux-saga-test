@@ -2,12 +2,16 @@ import React from 'react';
 
 import Post from '../../components/Post';
 
-export default class Home extends React.Component {
+export default class HomePage extends React.Component {
 
-  renderPosts = (posts) => posts.map(post => <Post data={post}/>);
+  componentDidMount() {
+    this.props.postsLoad();
+  }
+
+  renderPosts = (posts) => posts.data.map(data => <Post key={data.id} {...data}/>);
 
   render() {
-    const hasPosts = this.props.posts && this.props.posts.length;
+    const hasPosts = this.props.posts && this.props.posts.data.length;
     const failMessage = (<h3>There is no posts</h3>);
 
     return (
