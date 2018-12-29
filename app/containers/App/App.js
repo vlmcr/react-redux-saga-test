@@ -1,80 +1,20 @@
 import React from 'react';
+import {Switch, Route} from 'react-router-dom';
 
-import Logo from './../../images/logo.png';
+import HomePage from './../../containers/HomePage'
+
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 const App = () => (
     <div className="wrapper">
-      <header className="header">
-        <img src={Logo} className="logo"/>
+      <Header/>
 
-        <nav className="navigation">
-          <ul className="navigation-list">
-            <li className="navigation-list__item">Home</li>
-            <li className="navigation-list__item">About</li>
-            <li className="navigation-list__item">Contact</li>
-          </ul>
-        </nav>
-      </header>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+      </Switch>
 
-      <main className="main">
-        <div className="posts">
-          <div className="post">
-            <img className="post__img-preview"/>
-
-            <h5 className="post__title">Strategy & Corporate Finance</h5>
-
-            <p className="post__description">
-              Oratio pertinax cu vix, id his aliquam habemus tractatos. Eu vis modo officiis liberavisse, persequeris
-              complectitur mei et. Id invidunt adipiscing dapibus has.
-            </p>
-          </div>
-
-          <div className="post">
-            <img className="post__img-preview"/>
-
-            <h5 className="post__title">Strategy & Corporate Finance</h5>
-
-            <p className="post__description">
-              Oratio pertinax cu vix, id his aliquam habemus tractatos. Eu vis modo officiis liberavisse, persequeris
-              complectitur mei et. Id invidunt adipiscing dapibus has.
-            </p>
-          </div>
-
-          <div className="post">
-            <img className="post__img-preview"/>
-
-            <h5 className="post__title">Strategy & Corporate Finance</h5>
-
-            <p className="post__description">
-              Oratio pertinax cu vix, id his aliquam habemus tractatos. Eu vis modo officiis liberavisse, persequeris
-              complectitur mei et. Id invidunt adipiscing dapibus has.
-            </p>
-          </div>
-
-          <div className="post">
-            <img className="post__img-preview"/>
-
-            <h5 className="post__title">Strategy & Corporate Finance</h5>
-
-            <p className="post__description">
-              Oratio pertinax cu vix, id his aliquam habemus tractatos. Eu vis modo officiis liberavisse, persequeris
-              complectitur mei et. Id invidunt adipiscing dapibus has.
-            </p>
-          </div>
-        </div>
-      </main>
-
-      <footer className="footer">
-        <h3 className="footer__text-logo">Logo</h3>
-
-        <nav className="navigation">
-          <ul className="navigation-list navigation-list--inverse">
-            <li className="navigation-list__item">Home</li>
-            <li className="navigation-list__item">About</li>
-            <li className="navigation-list__item">Contact</li>
-          </ul>
-        </nav>
-      </footer>
+      <Footer/>
     </div>
 );
 
