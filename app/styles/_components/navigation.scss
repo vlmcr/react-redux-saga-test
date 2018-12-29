@@ -1,0 +1,22 @@
+.navigation {
+  width: 100%;
+  max-width: 400px;
+}
+
+.navigation-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  &--inverse {
+    .navigation-list__item {
+      color: $inverse-color;
+    }
+  }
+
+  &__item {
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
