@@ -6,7 +6,14 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 
 import { clearComments, clearUser, clearPost, commentsLoad, postLoad } from './actions';
-import { makeSelectComments, makeSelectPost, makeSelectUser } from "./selectors";
+import {
+  makeSelectComments,
+  makeSelectPost,
+  makeSelectUser,
+  makeSelectCommentsLoading,
+  makeSelectPostLoading,
+  makeSelectUserLoading
+} from "./selectors";
 import saga from './saga';
 import reducer from './reducer';
 
@@ -21,7 +28,10 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = () => createStructuredSelector({
   comments: makeSelectComments(),
   postData: makeSelectPost(),
-  user: makeSelectUser()
+  user: makeSelectUser(),
+  postLoading: makeSelectPostLoading(),
+  commentsLoading: makeSelectCommentsLoading(),
+  useLoading: makeSelectUserLoading()
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

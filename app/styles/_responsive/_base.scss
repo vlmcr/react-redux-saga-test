@@ -1,0 +1,27 @@
+@media screen and (max-width: $tablet-lg) {
+  .post {
+    flex-basis: 50%;
+  }
+}
+
+@media screen and (max-width: $tablet-md) {
+  .post {
+    flex-basis: 100%;
+  }
+
+  .header {
+    .mobile-navigation {
+      display: block;
+    }
+
+    .navigation {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-md) {
+  .footer__inner {
+    flex-direction: column;
+  }
+}

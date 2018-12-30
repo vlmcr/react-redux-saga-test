@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Comment from 'components/Comment';
+import LoadingIndicator from 'components/LoadingIndicator';
 
 export default class PostPage extends React.Component {
 
@@ -15,22 +16,36 @@ export default class PostPage extends React.Component {
     this.props.clearStore();
   }
 
+  isLoaded = (loading) => !loading.every(item => item);
+
   renderComments = (comments) => comments.map(data => <Comment key={data.id} {...data}/>);
 
+  renderPost = (props) => (
+    <div className="container post-page">
+      <h1 className="post-page__title">{props.postData.title}</h1>
+
+      <p className="post-page__author">
+        {props.user.name} - {props.user.email}
+      </p>
+
+      <p className="post-page__content">{props.postData.body}</p>
+
+      <div className="comments-list">
+        {props.comments && this.renderComments(props.comments)}
+      </div>
+    </div>
+  );
+
   render() {
+    const isLoaded = this.isLoaded([
+      this.props.postLoading,
+      this.props.commentsLoading,
+      this.props.useLoading
+    ]);
+
     return (
       <main className="main">
-        <div className="container post-page">
-          <h1 className="post-page__title">{this.props.postData.title}</h1>
-
-          <p className="post-page__author">{this.props.user.name} - {this.props.user.email}</p>
-
-          <p className="post-page__content">{this.props.postData.body}</p>
-
-          <div className="comments-list">
-            {this.props.comments && this.renderComments(this.props.comments)}
-          </div>
-        </div>
+        { isLoaded ? this.renderPost(this.props) : <LoadingIndicator/> }
       </main>
     )
   }

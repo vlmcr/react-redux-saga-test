@@ -7,11 +7,21 @@ import {
 } from "./constants";
 
 const initialState = fromJS({
-  loading: false,
-  error: false,
-  comments: false,
-  post: false,
-  user: false
+  comments: {
+    loading: false,
+    error: false,
+    list: false
+  },
+  post: {
+    loading: false,
+    error: false,
+    data: false
+  },
+  user: {
+    loading: false,
+    error: false,
+    data: false
+  }
 });
 
 
@@ -19,54 +29,54 @@ function postReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_COMMENTS:
       return state
-        .set('loading', true)
-        .set('error', false);
+        .setIn(['comments', 'loading'], true)
+        .setIn(['comments', 'error'], false);
     case LOAD_COMMENTS_SUCCESS:
       return state
-        .set('loading', false)
-        .set('error', false)
-        .set('comments', action.comments);
+        .setIn(['comments', 'loading'], false)
+        .setIn(['comments', 'error'], false)
+        .setIn(['comments', 'list'], action.comments);
     case LOAD_COMMENTS_ERROR:
       return state
-        .set('loading', false)
-        .set('error', action.error);
+        .setIn(['comments', 'loading'], false)
+        .setIn(['comments', 'error'], action.error);
     case CLEAR_COMMENTS:
       return state
-        .set('comments', false);
+        .setIn(['comments', 'list'], false);
 
     case LOAD_POST:
       return state
-        .set('loading', true)
-        .set('error', false);
+        .setIn(['loading'], true)
+        .setIn(['error'], false);
     case LOAD_POST_SUCCESS:
       return state
-        .set('loading', false)
-        .set('error', false)
-        .set('post', action.post);
+        .setIn(['post', 'loading'], false)
+        .setIn(['post', 'error'], false)
+        .setIn(['post', 'data'], action.post);
     case LOAD_POST_ERROR:
       return state
-        .set('loading', false)
-        .set('error', action.error);
+        .setIn(['post', 'loading'], false)
+        .setIn(['post', 'error'], action.error);
     case CLEAR_POST:
       return state
-        .set('post', false);
+        .setIn(['post', 'data'], false);
 
     case LOAD_USER:
       return state
-        .set('loading', true)
-        .set('error', false);
+        .setIn(['user', 'loading'], true)
+        .setIn(['user', 'error'], false);
     case LOAD_USER_SUCCESS:
       return state
-        .set('loading', false)
-        .set('error', false)
-        .set('user', action.user);
+        .setIn(['user', 'loading'], false)
+        .setIn(['user', 'error'], false)
+        .setIn(['user', 'data'], action.user);
     case LOAD_USER_ERROR:
       return state
-        .set('loading', false)
-        .set('error', action.error);
+        .setIn(['user', 'loading'], false)
+        .setIn(['user', 'error'], action.error);
     case CLEAR_USER:
       return state
-        .set('comments', false);
+        .setIn(['user', 'data'], false);
 
     default:
       return state;
