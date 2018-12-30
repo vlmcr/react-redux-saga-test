@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { LOAD_POSTS } from "./constants";
 import { postsLoaded, postsLoadingError } from "./actions";
-import { makeSelectPosts } from 'containers/HomePage/selectors';
 
 
 function* getPosts() {
@@ -11,10 +10,8 @@ function* getPosts() {
   const requestURL = `https://jsonplaceholder.typicode.com/posts`;
 
   try {
-    const posts = yield call(axios.get, requestURL, {
-      headers: { 'Content-Type': 'application/json' }
-    });
-    yield put(postsLoaded(posts));
+    const posts = yield call(axios.get, requestURL);
+    yield put(postsLoaded(posts.data));
   } catch (err) {
     yield put(postsLoadingError(err));
   }

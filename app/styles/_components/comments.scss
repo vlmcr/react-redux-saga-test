@@ -1,0 +1,26 @@
+.comments-list {
+  margin: 20px 0;
+}
+
+.comment {
+  padding: 20px 0;
+  border-top: 1px solid #f4f4f4;
+
+  &:last-child {
+    border-bottom: 1px solid #f4f4f4;
+  }
+
+  &__head {
+    display: flex;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: $secondary-color;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}

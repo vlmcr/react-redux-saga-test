@@ -1,13 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Post = (props) => (
-  <div className="post">
-    <img className="post__img-preview"/>
-
+  <Link className="post" to={`/post/${props.id}`}>
     <h5 className="post__title">{props.title}</h5>
 
     <p className="post__description">{props.body}</p>
-  </div>
+  </Link>
 );
 
 export default Post;

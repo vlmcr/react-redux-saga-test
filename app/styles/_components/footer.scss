@@ -1,15 +1,18 @@
 .footer {
   grid-area: footer;
   background-color: $bg-dark-color;
-  height: 120px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
 
   &__text-logo {
     font-size: 28px;
     font-weight: 600;
     color: $inverse-color;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 120px;
   }
 }

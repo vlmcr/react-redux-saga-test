@@ -1,6 +1,6 @@
 .navigation {
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .navigation-list {
@@ -10,7 +10,7 @@
   height: 100%;
 
   &--inverse {
-    .navigation-list__item {
+    .navigation-list__item a {
       color: $inverse-color;
     }
   }
@@ -18,5 +18,9 @@
   &__item {
     font-size: 15px;
     font-weight: 600;
+
+    a {
+      color: $primary-color;
+    }
   }
 }

@@ -8,19 +8,15 @@ export default class HomePage extends React.Component {
     this.props.postsLoad();
   }
 
-  renderPosts = (posts) => posts.data.map(data => <Post key={data.id} {...data}/>);
+  renderPosts = (posts) => posts.map(data => <Post key={data.id} {...data}/>);
 
   render() {
-    const hasPosts = this.props.posts && this.props.posts.data.length;
-    const failMessage = (<h3>There is no posts</h3>);
+    const hasPosts = this.props.posts && this.props.posts.length;
 
     return (
       <main className="main">
-        <div className="posts">
-          {hasPosts
-            ? this.renderPosts(this.props.posts)
-            : failMessage
-          }
+        <div className="container posts">
+          {hasPosts && this.renderPosts(this.props.posts)}
         </div>
       </main>
     )
